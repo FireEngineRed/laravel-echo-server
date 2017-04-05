@@ -4,7 +4,7 @@ import { Server } from './server';
 import { HttpApi } from './api';
 import { Log } from './log';
 
-const packageFile = require('../package.json');
+const packageFile = require('../../package.json');
 
 /**
  * Echo server class.
