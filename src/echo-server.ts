@@ -15,7 +15,7 @@ export class EchoServer {
      *
      * @type {object}
      */
-    public defaultOptions: any = {
+    public static defaultOptions: any = {
         authHost: 'http://localhost',
         authEndpoint: '/broadcasting/auth',
         clients: [],
@@ -90,7 +90,7 @@ export class EchoServer {
      */
     run(options: any): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.options = Object.assign(this.defaultOptions, options);
+            this.options = Object.assign(EchoServer.defaultOptions, options);
             this.startup();
             this.server = new Server(this.options);
 

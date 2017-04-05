@@ -1,8 +1,9 @@
-let fs = require('fs');
-let colors = require("colors");
-let echo = require('./../../dist');
-let inquirer = require('inquirer');
-const crypto = require('crypto');
+import {EchoServer} from "../echo-server";
+
+import fs = require('fs');
+import colors = require("colors");
+import inquirer = require('inquirer');
+import crypto = require('crypto');
 const CONFIG_FILE = process.cwd() + '/laravel-echo-server.json';
 
 /**
@@ -20,7 +21,7 @@ export class Cli {
      * Create new CLI instance.
      */
     constructor() {
-        this.defaultOptions = echo.defaultOptions;
+        this.defaultOptions = EchoServer.defaultOptions;
     }
 
     /**
@@ -49,9 +50,10 @@ export class Cli {
 
                 process.exit();
             }, (error) => {
-                console.error(colors.error(error));
+                console.error(colors.red(error));
             });
         }, error => console.error(error));
+        return yargs;
     }
 
     /**
@@ -136,13 +138,13 @@ export class Cli {
      * @param  {Object} yargs
      * @return {void}
      */
-    start(yargs): void {
+    start(yargs):any {
         let dir = yargs.argv.dir ? yargs.argv.dir.replace(/\/?$/, '/') : null;
         let configFile = dir ? dir + 'laravel-echo-server.json' : CONFIG_FILE;
 
-        fs.access(configFile, fs.F_OK, (error) => {
+        fs.access(configFile, fs.constants.F_OK, (error) => {
             if (error) {
-                console.error(colors.error('Error: laravel-echo-server.json file not found.'));
+                console.error(colors.red('Error: laravel-echo-server.json file not found.'));
 
                 return false;
             }
@@ -151,7 +153,7 @@ export class Cli {
 
             options.devMode = yargs.argv.dev || options.devMode || false;
 
-            echo.run(options);
+            (new EchoServer()).run(options);
         });
     }
 
@@ -188,7 +190,7 @@ export class Cli {
      * @param  {Object} yargs
      * @return {void}
      */
-    clientAdd(yargs): void {
+    clientAdd(yargs) {
         var options = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
         var appId = yargs.argv._[1] || this.createAppId();
         options.clients = options.clients || [];
@@ -222,6 +224,7 @@ export class Cli {
 
             this.saveConfig(options);
         }
+        return yargs;
     }
 
     /**
@@ -230,7 +233,7 @@ export class Cli {
      * @param  {Object} yargs
      * @return {void}
      */
-    clientRemove(yargs): void {
+    clientRemove(yargs) {
         var options = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
         var appId = yargs.argv._[1] || null;
         options.clients = options.clients || [];
@@ -249,5 +252,6 @@ export class Cli {
         console.log(colors.green('Client removed: ' + appId));
 
         this.saveConfig(options);
+        return yargs;
     }
 }

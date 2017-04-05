@@ -1,4 +1,4 @@
-var request = require('request');
+import request = require('request');
 import { Channel } from './channel';
 import { Log } from './../log';
 
@@ -13,7 +13,7 @@ export class PrivateChannel {
     /**
      * Create a new private channel instance.
      */
-    constructor(private options) {
+    constructor(private options, request: any) {
         this.request = request;
     }
 
@@ -54,6 +54,19 @@ export class PrivateChannel {
      */
     protected serverRequest(socket: any, options: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
+
+            try
+            {
+                let tenant = socket.request.host.split('.')[0];
+                options.url = options.url.replace('<tenant>', tenant);
+            } catch(e) {
+                reject({
+                    reason: 'cannot read tenant name from request host: ' + socket.request.host,
+                    status: 0
+                });
+                return;
+            }
+
             options.headers = this.prepareHeaders(socket, options);
             let body;
 
