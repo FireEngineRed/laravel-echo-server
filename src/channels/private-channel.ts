@@ -55,17 +55,21 @@ export class PrivateChannel {
     protected serverRequest(socket: any, options: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
 
+            let host:string = socket.request.headers.host;
             try
             {
-                let tenant = socket.request.host.split('.')[0];
+                let tenant = host.split('.')[0];
                 options.url = options.url.replace('<tenant>', tenant);
             } catch(e) {
                 reject({
-                    reason: 'cannot read tenant name from request host: ' + socket.request.host,
+                    reason: 'cannot read tenant name from request host: ' + host,
                     status: 0
                 });
+
                 return;
             }
+
+            Log.info(`authenticating client to ${options.url}`);
 
             options.headers = this.prepareHeaders(socket, options);
             let body;

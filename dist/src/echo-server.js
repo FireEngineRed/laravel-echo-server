@@ -5,7 +5,7 @@ var channels_1 = require("./channels");
 var server_1 = require("./server");
 var api_1 = require("./api");
 var log_1 = require("./log");
-var packageFile = require('../package.json');
+var packageFile = require('../../package.json');
 var EchoServer = (function () {
     function EchoServer() {
     }

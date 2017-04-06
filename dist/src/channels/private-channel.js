@@ -22,17 +22,19 @@ var PrivateChannel = (function () {
     PrivateChannel.prototype.serverRequest = function (socket, options) {
         var _this = this;
         return new Promise(function (resolve, reject) {
+            var host = socket.request.headers.host;
             try {
-                var tenant = socket.request.host.split('.')[0];
+                var tenant = host.split('.')[0];
                 options.url = options.url.replace('<tenant>', tenant);
             }
             catch (e) {
                 reject({
-                    reason: 'cannot read tenant name from request host: ' + socket.request.host,
+                    reason: 'cannot read tenant name from request host: ' + host,
                     status: 0
                 });
                 return;
             }
+            log_1.Log.info("authenticating client to " + options.url);
             options.headers = _this.prepareHeaders(socket, options);
             var body;
             _this.request.post(options, function (error, response, body, next) {

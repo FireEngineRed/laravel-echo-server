@@ -21,7 +21,7 @@ var RedisSubscriber = (function () {
                     console.log('CHANNEL', channel);
                 }
                 catch (e) {
-                    log_1.Log.info("No JSON message");
+                    log_1.Log.info("No JSON message: " + subscribed);
                 }
             });
             _this._redis.psubscribe('*', function (err, count) {
