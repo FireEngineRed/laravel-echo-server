@@ -17,9 +17,7 @@
     "esversion": 6
   },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc -w",
-    "prepublish": "npm run build"
+    "build": "tsc"
   },
   "dependencies": {
     "colors": "^1.1.2",
