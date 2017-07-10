@@ -44,7 +44,7 @@
     "@types/lodash": "^4.14.61",
     "@types/nock": "^8.2.1",
     "@types/node": "^6.0.60",
-    "@types/request": "0.0.42",
+    "@types/request": "0.0.45",
     "@types/socket.io": "^1.4.29",
     "@types/sqlite3": "^2.2.33",
     "@types/yargs": "^6.6.0",
