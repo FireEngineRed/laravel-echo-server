@@ -115,25 +115,25 @@ var EchoServer = (function () {
             _this.channel.clientEvent(socket, data);
         });
     };
+    EchoServer.defaultOptions = {
+        authHost: 'http://localhost',
+        authEndpoint: '/broadcasting/auth',
+        clients: [],
+        database: 'redis',
+        databaseConfig: {
+            redis: {},
+            sqlite: {
+                databasePath: '/database/laravel-echo-server.sqlite'
+            }
+        },
+        devMode: false,
+        host: null,
+        port: 6001,
+        protocol: "http",
+        socketio: {},
+        sslCertPath: '',
+        sslKeyPath: ''
+    };
     return EchoServer;
 }());
-EchoServer.defaultOptions = {
-    authHost: 'http://localhost',
-    authEndpoint: '/broadcasting/auth',
-    clients: [],
-    database: 'redis',
-    databaseConfig: {
-        redis: {},
-        sqlite: {
-            databasePath: '/database/laravel-echo-server.sqlite'
-        }
-    },
-    devMode: false,
-    host: null,
-    port: 6001,
-    protocol: "http",
-    socketio: {},
-    sslCertPath: '',
-    sslKeyPath: ''
-};
 exports.EchoServer = EchoServer;
