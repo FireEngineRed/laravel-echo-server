@@ -1,53 +1,107 @@
 {
-  "name": "laravel-echo-server",
-  "version": "1.2.9",
-  "description": "Laravel Echo Node JS Server for Socket.io",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tlaverdure/Laravel-Echo-Server.git"
+  "_from": "laravel-echo-server@1.6.0",
+  "_id": "laravel-echo-server@1.6.0",
+  "_inBundle": false,
+  "_integrity": "sha512-QGxJywshj9XxGzltQdmIZvMLC5m0qUGli6RvtqYxD0m1Jf2RcAsgrazhOfKV8axtt0yAJSgtym3lHOPNdUl0uA==",
+  "_location": "/laravel-echo-server",
+  "_phantomChildren": {
+    "code-point-at": "1.1.0",
+    "decamelize": "1.2.0",
+    "escape-string-regexp": "1.0.5",
+    "exit-hook": "1.1.1",
+    "extend": "3.0.2",
+    "has-ansi": "2.0.0",
+    "is-stream": "1.1.0",
+    "map-age-cleaner": "0.1.3",
+    "mimic-fn": "2.1.0",
+    "nice-try": "1.0.5",
+    "npm-run-path": "2.0.2",
+    "number-is-nan": "1.0.1",
+    "object-assign": "4.1.1",
+    "os-tmpdir": "1.0.2",
+    "p-finally": "1.0.0",
+    "pinkie-promise": "2.0.1",
+    "pump": "3.0.0",
+    "require-directory": "2.1.1",
+    "run-async": "2.4.1",
+    "semver": "5.7.1",
+    "set-blocking": "2.0.0",
+    "shebang-command": "1.2.0",
+    "signal-exit": "3.0.3",
+    "spawn-sync": "1.0.15",
+    "strip-eof": "1.0.0",
+    "through": "2.3.8",
+    "which": "1.3.1",
+    "which-module": "2.0.0"
   },
-  "main": "dist/index.js",
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "laravel-echo-server@1.6.0",
+    "name": "laravel-echo-server",
+    "escapedName": "laravel-echo-server",
+    "rawSpec": "1.6.0",
+    "saveSpec": null,
+    "fetchSpec": "1.6.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/laravel-echo-server/-/laravel-echo-server-1.6.0.tgz",
+  "_shasum": "636249c8f4c0dd0afaf6a9b5a4a0c8cb51dbb6eb",
+  "_spec": "laravel-echo-server@1.6.0",
+  "_where": "/var/www/local.fireworkscrm.com/fireworks",
+  "author": {
+    "name": "Thiery Laverdure"
+  },
+  "bin": {
+    "laravel-echo-server": "bin/server.js"
+  },
+  "bugs": {
+    "url": "https://github.com/tlaverdure/Laravel-Echo-Server/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "colors": "^1.1.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.14.0",
+    "inquirer": "^1.1.3",
+    "ioredis": "^3.2.2",
+    "lodash": "^4.17.10",
+    "request": "^2.87.0",
+    "socket.io": "^2.1.1",
+    "yargs": "^11.0.0"
+  },
+  "deprecated": false,
+  "description": "Laravel Echo Node JS Server for Socket.io",
+  "devDependencies": {
+    "@types/lodash": "^4.14.93",
+    "@types/node": "^6.0.60",
+    "typescript": "^2.6.0"
+  },
+  "homepage": "https://github.com/tlaverdure/Laravel-Echo-Server#readme",
+  "jshintConfig": {
+    "esversion": 6
+  },
   "keywords": [
     "laravel",
     "socket.io"
   ],
-  "author": "Thiery Laverdure",
   "license": "MIT",
-  "jshintConfig": {
-    "esversion": 6
+  "main": "dist/index.js",
+  "name": "laravel-echo-server",
+  "peerDependecies": {
+    "sqlite3": "^3.1.13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tlaverdure/Laravel-Echo-Server.git"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "tsc -w",
+    "prepublish": "npm run build"
   },
-  "dependencies": {
-    "colors": "^1.1.2",
-    "express": "^4.14.0",
-    "inquirer": "^1.1.3",
-    "ioredis": "^1.15.1",
-    "lodash": "^4.12.0",
-    "request": "^2.72.0",
-    "socket.io": "^2.0.1",
-    "sqlite3": "^3.1.8",
-    "yargs": "^5.0.0"
-  },
-  "devDependencies": {
-    "@types/colors": "^1.1.2",
-    "@types/express": "^4.0.35",
-    "@types/inquirer": "0.0.32",
-    "@types/ioredis": "0.0.22",
-    "@types/jasmine": "^2.5.47",
-    "@types/lodash": "^4.14.61",
-    "@types/nock": "^8.2.1",
-    "@types/node": "^6.0.60",
-    "@types/request": "0.0.45",
-    "@types/socket.io": "^1.4.29",
-    "@types/sqlite3": "^2.2.33",
-    "@types/yargs": "^6.6.0",
-    "jasmine": "^2.5.3",
-    "nock": "^9.0.11",
-    "typescript": "^2.0.3"
-  },
-  "bin": {
-    "laravel-echo-server": "bin/server.js"
-  }
+  "version": "1.6.0"
 }
